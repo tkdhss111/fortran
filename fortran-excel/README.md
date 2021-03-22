@@ -1,1 +1,1 @@
-# CMake Based Template for Fortran Project
+# Fortran Wrapper of libxlswriter
