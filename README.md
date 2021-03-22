@@ -1,2 +1,2 @@
-# fortran
+# Fortran
 Fortran utilities
