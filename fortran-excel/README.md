@@ -1,4 +1,4 @@
-# Fortran wrapper of libxlswriter
+# Fortran wrapper of libxlsxwriter
 
 Libxlsxwriter: A C library for creating Excel XLSX files written by John McNamara <jmcnamara@cpan.org>  
 
