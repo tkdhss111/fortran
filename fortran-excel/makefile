@@ -1,6 +1,6 @@
 BIN := template
 
-DIR_INS=${HOME}/fortran/fortran-excel
+DIR_INS=${HOME}/2_Tools/fortran/fortran-excel
 DIR_BIN=${DIR_INS}/bin
 
 CMAKE       := cmake .. -GNinja -DCMAKE_INSTALL_PREFIX=$(DIR_INS)

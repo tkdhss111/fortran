@@ -1,0 +1,18 @@
+Start testing: Mar 23 22:32 JST
+----------------------------------------------------------
+1/1 Testing: basic
+1/1 Test: basic
+Command: "/Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic/basic"
+Directory: /Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic
+"basic" start time: Mar 23 22:32 JST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"basic" end time: Mar 23 22:32 JST
+"basic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 23 22:32 JST

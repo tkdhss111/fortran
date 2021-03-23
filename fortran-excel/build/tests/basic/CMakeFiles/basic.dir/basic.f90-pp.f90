@@ -1,3 +1,7 @@
+# 1 "../tests/basic/basic.f90"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "../tests/basic/basic.f90"
 program main
 
   use excel_mo
@@ -68,8 +72,8 @@ program main
   call worksheet_insert_image ( ws, row = 8, col = 1, file = cs('fig.png') )
 
   ! Datetime
-  call format_set_num_format ( fm(7), cs('yyyy-mm-dd hh:mm:ss') )
   datetime = datetime_ty( year = 2021, month = 3, day = 1, hour = 2, min = 30, sec = 10.d0 ) 
+  call format_set_num_format ( fm(7), cs('yyyy-mm-dd hh:mm:ss') )
   call worksheet_write_datetime( ws, 7, 2, datetime, fm(7) )
 
   ! Close the workbook

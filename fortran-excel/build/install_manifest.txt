@@ -1,0 +1,1 @@
+/Users/hisashitakeda/2_Tools/fortran/fortran-excel/bin/basic

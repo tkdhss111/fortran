@@ -1,0 +1,17 @@
+# ninja log v5
+6	105	1616506232645515762	tests/basic/CMakeFiles/basic.dir/basic.f90.o.ddi	9be2137af283687d
+6	100	1616505781791427488	tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90-pp.f90	564edea65c719dd9
+6	100	1616505781791427488	tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o.ddi	564edea65c719dd9
+9	80	0	CMakeFiles/install.util	650ffe1a55a5b181
+6	105	1616506232645515762	tests/basic/CMakeFiles/basic.dir/basic.f90-pp.f90	9be2137af283687d
+184	357	1616505782048033040	tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o	53e8264302a830b3
+207	440	1616506232978844268	tests/basic/CMakeFiles/basic.dir/basic.f90.o	e716106e2a6855ff
+7	601	1616506233129211891	tests/basic/CMakeFiles/basic.dir/__/__/src/excel.c.o	e2764191a51f83ea
+118	175	1616506232715202644	tests/basic/CMakeFiles/basic.dir/Fortran.dd	31e949f0e02b9b3b
+601	841	1616506233370219279	tests/basic/basic	f899cc11b568ccab
+184	357	1616505782048033040	tests/basic/excel_mo.mod	53e8264302a830b3
+6	103	1616506328504775586	tests/basic/CMakeFiles/basic.dir/basic.f90-pp.f90	9be2137af283687d
+6	103	1616506328504775586	tests/basic/CMakeFiles/basic.dir/basic.f90.o.ddi	9be2137af283687d
+116	168	1616506328568947645	tests/basic/CMakeFiles/basic.dir/Fortran.dd	31e949f0e02b9b3b
+185	354	1616506328754779855	tests/basic/CMakeFiles/basic.dir/basic.f90.o	e716106e2a6855ff
+354	570	1616506328961135471	tests/basic/basic	f899cc11b568ccab

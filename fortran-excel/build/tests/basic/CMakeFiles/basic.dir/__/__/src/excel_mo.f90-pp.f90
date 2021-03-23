@@ -1,3 +1,7 @@
+# 1 "../src/excel_mo.f90"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "../src/excel_mo.f90"
 module excel_mo
 
   use, intrinsic :: iso_c_binding

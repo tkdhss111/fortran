@@ -18,6 +18,11 @@ void workbook_add_format_c( lxw_workbook **workbook, lxw_format **format )
   *format = workbook_add_format( *workbook );
 }
 
+void worksheet_write_datetime_c( lxw_worksheet **worksheet, int row, int col, lxw_datetime *datetime, lxw_format **format )
+{
+  worksheet_write_datetime( *worksheet, row - 1, col - 1, datetime, *format );
+}
+
 void format_set_shrink_c( lxw_format **format )
 {
   format_set_shrink( *format );
