@@ -18,6 +18,11 @@ void workbook_add_format_c( lxw_workbook **workbook, lxw_format **format )
   *format = workbook_add_format( *workbook );
 }
 
+void workbook_define_name_c( lxw_workbook **workbook, const char* name, const char* formula )
+{
+  workbook_define_name( *workbook, name, formula );
+}
+
 void worksheet_write_datetime_c( lxw_worksheet **worksheet, int row, int col, lxw_datetime *datetime, lxw_format **format )
 {
   worksheet_write_datetime( *worksheet, row - 1, col - 1, datetime, *format );
@@ -78,6 +83,12 @@ void workbook_close_c( lxw_workbook **workbook )
   workbook_close( *workbook );
 }
 
+// URL
+void worksheet_write_url_c( lxw_worksheet **worksheet, int row, int col, const char* url, lxw_format **format )
+{
+  worksheet_write_url( *worksheet, row - 1, col - 1, url, *format );
+}
+
 // Font size
 void format_set_font_size_c( lxw_format **format, int size ) { format_set_font_size( *format, (double)size ); }
 
@@ -86,6 +97,27 @@ void format_set_font_name_c( lxw_format **format, const char* name ) { format_se
 
 // Number format 
 void format_set_num_format_c( lxw_format **format, const char* style ) { format_set_num_format( *format, style ); }
+
+// Tab color
+void worksheet_set_tab_color_c( lxw_worksheet **worksheet, const char* color )
+{
+  if ( strcmp(color, "black"  ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_BLACK  ); 
+  if ( strcmp(color, "blue"   ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_BLUE   ); 
+  if ( strcmp(color, "brown"  ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_BROWN  ); 
+  if ( strcmp(color, "cyan"   ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_CYAN   ); 
+  if ( strcmp(color, "gray"   ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_GRAY   ); 
+  if ( strcmp(color, "green"  ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_GREEN  ); 
+  if ( strcmp(color, "lime"   ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_LIME   ); 
+  if ( strcmp(color, "magenta") == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_MAGENTA); 
+  if ( strcmp(color, "navy"   ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_NAVY   ); 
+  if ( strcmp(color, "orange" ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_ORANGE ); 
+  if ( strcmp(color, "pink"   ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_PINK   ); 
+  if ( strcmp(color, "purple" ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_PURPLE ); 
+  if ( strcmp(color, "red"    ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_RED    ); 
+  if ( strcmp(color, "silver" ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_SILVER ); 
+  if ( strcmp(color, "white"  ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_WHITE  ); 
+  if ( strcmp(color, "yellow" ) == 0 ) worksheet_set_tab_color( *worksheet, LXW_COLOR_YELLOW ); 
+}
 
 // Font color
 void format_set_font_color_c( lxw_format **format, const char* color )
@@ -127,6 +159,14 @@ void format_set_bg_color_c( lxw_format **format, const char* color )
   if ( strcmp(color, "silver" ) == 0 ) format_set_bg_color( *format, LXW_COLOR_SILVER ); 
   if ( strcmp(color, "white"  ) == 0 ) format_set_bg_color( *format, LXW_COLOR_WHITE  ); 
   if ( strcmp(color, "yellow" ) == 0 ) format_set_bg_color( *format, LXW_COLOR_YELLOW ); 
+}
+
+void format_set_underline_c( lxw_format **format, const char* style )
+{ 
+  if ( strcmp(style, "single"            ) == 0 ) format_set_underline( *format, LXW_UNDERLINE_SINGLE            );
+  if ( strcmp(style, "double"            ) == 0 ) format_set_underline( *format, LXW_UNDERLINE_DOUBLE            );
+  if ( strcmp(style, "single_accounting" ) == 0 ) format_set_underline( *format, LXW_UNDERLINE_SINGLE_ACCOUNTING );
+  if ( strcmp(style, "double_accounting" ) == 0 ) format_set_underline( *format, LXW_UNDERLINE_DOUBLE_ACCOUNTING );
 }
 
 // Pattern

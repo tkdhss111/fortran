@@ -41,6 +41,13 @@ module excel_mo
       type(c_ptr), intent(in) :: workbook, format
     end subroutine
 
+    subroutine workbook_define_name ( workbook, name, formula ) &
+        bind ( c, name = 'workbook_define_name_c' )
+      import c_ptr, c_char
+      type(c_ptr),       intent(in) :: workbook
+      character(c_char), intent(in) :: name, formula
+    end subroutine
+
     subroutine worksheet_write_datetime( workbook, row, col, datetime, format ) &
         bind ( c, name = 'worksheet_write_datetime_c' )
       import c_ptr, c_int, c_char, datetime_ty
@@ -128,6 +135,15 @@ module excel_mo
       type(c_ptr), intent(in) :: workbook
     end subroutine
 
+    ! URL
+    subroutine worksheet_write_url ( worksheet, row, col, url, format ) &
+        bind ( c, name = 'worksheet_write_url_c' )
+      import c_ptr, c_int, c_char
+      type(c_ptr), intent(in) :: worksheet, format
+      integer(c_int),    intent(in), value :: row, col
+      character(c_char), intent(in)        :: url
+    end subroutine
+
     ! Font size
     subroutine format_set_font_size ( format, size ) &
         bind ( c, name = 'format_set_font_size_c' )
@@ -152,12 +168,28 @@ module excel_mo
       character(c_char), intent(in) :: style
     end subroutine
 
+    ! Tab color
+    subroutine worksheet_set_tab_color ( worksheet, color ) &
+        bind ( c, name = 'worksheet_set_tab_color_c' )
+      import c_ptr, c_char
+      type(c_ptr),       intent(in) :: worksheet
+      character(c_char), intent(in) :: color
+    end subroutine
+
     ! Font color
     subroutine format_set_font_color ( format, color ) &
         bind ( c, name = 'format_set_font_color_c' )
       import c_ptr, c_char
       type(c_ptr),       intent(in) :: format
       character(c_char), intent(in) :: color
+    end subroutine
+
+    ! Underline
+    subroutine format_set_underline ( format, style ) &
+        bind ( c, name = 'format_set_underline_c' )
+      import c_ptr, c_char
+      type(c_ptr),       intent(in) :: format
+      character(c_char), intent(in) :: style
     end subroutine
 
     ! Pattern

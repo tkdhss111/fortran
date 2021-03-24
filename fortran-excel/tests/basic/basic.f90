@@ -16,6 +16,7 @@ program main
   ! Workbook and worksheets
   call workbook_new ( wb, file = cs('test.xlsx') )
   call workbook_add_worksheet ( wb, ws, cs('new_sheet') )
+  call worksheet_set_tab_color ( ws, cs('lime') )
 
   ! Format settings
   do i = 0, NFMS 
@@ -30,7 +31,7 @@ program main
 
   ! Header
   call worksheet_set_row     ( ws, fm(0), row = 1, height = 40 )
-  call worksheet_set_column  ( ws, fm(0), col = 2, width  = 20 )
+  call worksheet_set_column  ( ws, fm(0), col = 2, width  = 40 )
   call format_set_bold       ( fm(1) )
   call format_set_bg_color   ( fm(1), cs('navy')  )
   call format_set_font_color ( fm(1), cs('white') )
@@ -71,6 +72,15 @@ program main
   call format_set_num_format ( fm(7), cs('yyyy-mm-dd hh:mm:ss') )
   datetime = datetime_ty( year = 2021, month = 3, day = 1, hour = 2, min = 30, sec = 10.d0 ) 
   call worksheet_write_datetime( ws, 7, 2, datetime, fm(7) )
+
+  ! URL
+  call format_set_font_color ( fm(5), cs('blue') )
+  call format_set_underline ( fm(5), cs('single') )
+  call worksheet_write_url ( ws, row = 8, col = 2, url = cs('http://libxlsxwriter.github.io'), format = fm(5) )
+
+  ! Defined name
+  call workbook_define_name ( wb, name = cs('Exchange_rate'), formula = cs('=110.0') )
+  call worksheet_write_formula ( ws, row = 9, col = 2, formula = cs('=Exchange_rate'), format = fm(0) )
 
   ! Close the workbook
   call workbook_close ( wb )
