@@ -21,6 +21,30 @@ module excel_mo
 
   interface
 
+    integer(c_int) function name2row ( name ) &
+        bind ( c, name = 'name2row_c' )
+      import c_char, c_int
+      character(c_char), intent(in) :: name
+    end function
+
+    integer(c_int) function name2col ( name ) &
+        bind ( c, name = 'name2col_c' )
+      import c_char, c_int
+      character(c_char), intent(in) :: name
+    end function
+
+    integer(c_int) function name2row2 ( name ) &
+        bind ( c, name = 'name2row2_c' )
+      import c_char, c_int
+      character(c_char), intent(in) :: name
+    end function
+
+    integer(c_int) function name2col2 ( name ) &
+        bind ( c, name = 'name2col2_c' )
+      import c_char, c_int
+      character(c_char), intent(in) :: name
+    end function
+
     subroutine workbook_new ( workbook, file ) &
         bind ( c, name = 'workbook_new_c' )
       import c_ptr, c_char
@@ -33,6 +57,24 @@ module excel_mo
       import c_ptr, c_char
       type(c_ptr),       intent(in) :: workbook, worksheet
       character(c_char), intent(in) :: name
+    end subroutine
+
+    subroutine worksheet_activate ( worksheet ) &
+        bind ( c, name = 'worksheet_activate_c' )
+      import c_ptr
+      type(c_ptr), intent(in) :: worksheet
+    end subroutine
+
+    subroutine worksheet_hide ( worksheet ) &
+        bind ( c, name = 'worksheet_hide_c' )
+      import c_ptr
+      type(c_ptr), intent(in) :: worksheet
+    end subroutine
+
+    subroutine worksheet_set_first_sheet ( worksheet ) &
+        bind ( c, name = 'worksheet_set_first_sheet_c' )
+      import c_ptr
+      type(c_ptr), intent(in) :: worksheet
     end subroutine
 
     subroutine workbook_add_format ( workbook, format ) &
@@ -81,6 +123,14 @@ module excel_mo
       integer(c_int), intent(in), value :: first_row, first_col, last_row, last_col
     end subroutine
 
+    subroutine worksheet_merge_range ( worksheet, first_row, first_col, last_row, last_col, string, format ) &
+        bind ( c, name = 'worksheet_merge_range_c' )
+      import c_ptr, c_int, c_char
+      type(c_ptr),       intent(in)        :: worksheet, format
+      integer(c_int),    intent(in), value :: first_row, first_col, last_row, last_col
+      character(c_char), intent(in)        :: string
+    end subroutine
+
     subroutine worksheet_set_row ( worksheet, format, row, height ) &
         bind ( c, name = 'worksheet_set_row_c' )
       import c_ptr, c_int
@@ -113,12 +163,12 @@ module excel_mo
       real(c_double), intent(in), value :: value
     end subroutine
 
-    subroutine worksheet_write_string ( worksheet, format, row, col, text ) &
+    subroutine worksheet_write_string ( worksheet, format, row, col, string ) &
         bind ( c, name = 'worksheet_write_string_c' )
       import c_ptr, c_int, c_char
       type(c_ptr),       intent(in)        :: worksheet, format
       integer(c_int),    intent(in), value :: row, col
-      character(c_char), intent(in)        :: text
+      character(c_char), intent(in)        :: string
     end subroutine
 
     subroutine worksheet_insert_image ( worksheet, row, col, file ) &
@@ -129,12 +179,26 @@ module excel_mo
       character(c_char), intent(in)        :: file
     end subroutine
 
-    subroutine worksheet_write_comment ( worksheet, row, col, text ) &
+    subroutine worksheet_write_comment ( worksheet, row, col, string ) &
         bind ( c, name = 'worksheet_write_comment_c' )
       import c_ptr, c_int, c_char
       type(c_ptr),       intent(in)        :: worksheet
       integer(c_int),    intent(in), value :: row, col
-      character(c_char), intent(in)        :: text
+      character(c_char), intent(in)        :: string
+    end subroutine
+
+    subroutine worksheet_set_header ( worksheet, string ) &
+        bind ( c, name = 'worksheet_set_header_c' )
+      import c_ptr, c_char
+      type(c_ptr),       intent(in) :: worksheet
+      character(c_char), intent(in) :: string
+    end subroutine
+
+    subroutine worksheet_set_footer ( worksheet, string ) &
+        bind ( c, name = 'worksheet_set_footer_c' )
+      import c_ptr, c_char
+      type(c_ptr),       intent(in) :: worksheet
+      character(c_char), intent(in) :: string
     end subroutine
 
     subroutine workbook_close ( workbook ) &

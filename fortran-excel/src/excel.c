@@ -3,6 +3,26 @@
 // See the following URL to add more functions.
 // USL: https://libxlsxwriter.github.io/working_with_formats.html
 
+int name2row_c( const char* name )
+{
+  return lxw_name_to_row( name ) + 1;
+}
+
+int name2col_c( const char* name )
+{
+  return lxw_name_to_col( name ) + 1;
+}
+
+int name2row2_c( const char* name )
+{
+  return lxw_name_to_row_2( name ) + 1;
+}
+
+int name2col2_c( const char* name )
+{
+  return lxw_name_to_col_2( name ) + 1;
+}
+
 void workbook_new_c( lxw_workbook **workbook, const char* file )
 {
   *workbook = workbook_new( file );
@@ -11,6 +31,21 @@ void workbook_new_c( lxw_workbook **workbook, const char* file )
 void workbook_add_worksheet_c( lxw_workbook **workbook, lxw_worksheet **worksheet, const char* name )
 {
   *worksheet = workbook_add_worksheet( *workbook, name );
+}
+
+void worksheet_activate_c( lxw_worksheet **worksheet )
+{
+  worksheet_activate( *worksheet );
+}
+
+void worksheet_hide_c( lxw_worksheet **worksheet )
+{
+  worksheet_hide( *worksheet );
+}
+
+void worksheet_set_first_sheet_c( lxw_worksheet **worksheet )
+{
+  worksheet_set_first_sheet( *worksheet );
 }
 
 void workbook_add_format_c( lxw_workbook **workbook, lxw_format **format )
@@ -48,6 +83,12 @@ void worksheet_autofilter_c( lxw_worksheet **worksheet, int first_row, int first
   worksheet_autofilter( *worksheet, first_row - 1, first_col - 1, last_row - 1, last_col - 1 );
 }
 
+void worksheet_merge_range_c( lxw_worksheet **worksheet, int first_row, int first_col, int last_row, int last_col, 
+                              const char* text, lxw_format **format )
+{
+  worksheet_merge_range( *worksheet, first_row - 1, first_col - 1, last_row - 1, last_col - 1, text, *format );
+}
+
 void worksheet_set_row_c( lxw_worksheet **worksheet, lxw_format **format, int row, int height )
 {
   worksheet_set_row( *worksheet, row - 1, height, *format );
@@ -81,6 +122,16 @@ void worksheet_write_comment_c( lxw_worksheet **worksheet, int row, int col, con
 void worksheet_insert_image_c( lxw_worksheet **worksheet, int row, int col, const char* file )
 {
   worksheet_insert_image( *worksheet, row - 1, col - 1, file );
+}
+
+void worksheet_set_header_c( lxw_worksheet **worksheet, const char* file )
+{
+  worksheet_set_header( *worksheet, file );
+}
+
+void worksheet_set_footer_c( lxw_worksheet **worksheet, const char* file )
+{
+  worksheet_set_footer( *worksheet, file );
 }
 
 void workbook_close_c( lxw_workbook **workbook )

@@ -1,16 +1,16 @@
 {
 	"compiler-id" : "GNU",
-	"dir-cur-bld" : "/Users/hisashitakeda/1_Projects/fortran/fortran-excel/build/tests/basic",
-	"dir-cur-src" : "/Users/hisashitakeda/1_Projects/fortran/fortran-excel/tests/basic",
-	"dir-top-bld" : "/Users/hisashitakeda/1_Projects/fortran/fortran-excel/build",
-	"dir-top-src" : "/Users/hisashitakeda/1_Projects/fortran/fortran-excel",
+	"dir-cur-bld" : "/Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic",
+	"dir-cur-src" : "/Users/hisashitakeda/2_Tools/fortran/fortran-excel/tests/basic",
+	"dir-top-bld" : "/Users/hisashitakeda/2_Tools/fortran/fortran-excel/build",
+	"dir-top-src" : "/Users/hisashitakeda/2_Tools/fortran/fortran-excel",
 	"include-dirs" : 
 	[
 		"/usr/local/include"
 	],
 	"language" : "Fortran",
 	"linked-target-dirs" : [],
-	"module-dir" : "/Users/hisashitakeda/1_Projects/fortran/fortran-excel/build/tests/basic",
+	"module-dir" : "/Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic",
 	"submodule-ext" : ".smod",
 	"submodule-sep" : "@"
 }
