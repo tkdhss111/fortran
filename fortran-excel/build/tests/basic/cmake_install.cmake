@@ -1,4 +1,4 @@
-# Install script for directory: /Users/hisashitakeda/2_Tools/fortran/fortran-excel/tests/basic
+# Install script for directory: /Users/hisashitakeda/1_Projects/fortran/fortran-excel/tests/basic
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic/basic")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/hisashitakeda/1_Projects/fortran/fortran-excel/build/tests/basic/basic")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/basic" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/basic")
     if(CMAKE_INSTALL_DO_STRIP)

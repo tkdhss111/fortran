@@ -73,6 +73,11 @@ void worksheet_write_string_c( lxw_worksheet **worksheet, lxw_format **format, i
   worksheet_write_string( *worksheet, row - 1, col - 1, text, *format );
 }
 
+void worksheet_write_comment_c( lxw_worksheet **worksheet, int row, int col, const char* text )
+{
+  worksheet_write_comment( *worksheet, row - 1, col - 1, text );
+}
+
 void worksheet_insert_image_c( lxw_worksheet **worksheet, int row, int col, const char* file )
 {
   worksheet_insert_image( *worksheet, row - 1, col - 1, file );

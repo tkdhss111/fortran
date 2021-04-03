@@ -58,7 +58,8 @@ program main
   call format_set_align      ( fm(8), cs('right') )
   call format_set_align      ( fm(8), cs('vertical_right') )
   call format_set_bold       ( fm(8) )
-  call worksheet_write_string  ( ws, fm(8), row = 6, col = 1, text = cs('Totals:')     )
+  call worksheet_write_string  ( ws, fm(8), row = 6, col = 1, text = cs('Totals:') )
+  call worksheet_write_comment ( ws, row = 6, col = 1, text = cs('This is comment') )
 
   call format_set_num_format ( fm(9), cs('0.0') )
   call format_set_bg_color   ( fm(9), cs('yellow')  )

@@ -129,6 +129,14 @@ module excel_mo
       character(c_char), intent(in)        :: file
     end subroutine
 
+    subroutine worksheet_write_comment ( worksheet, row, col, text ) &
+        bind ( c, name = 'worksheet_write_comment_c' )
+      import c_ptr, c_int, c_char
+      type(c_ptr),       intent(in)        :: worksheet
+      integer(c_int),    intent(in), value :: row, col
+      character(c_char), intent(in)        :: text
+    end subroutine
+
     subroutine workbook_close ( workbook ) &
         bind ( c, name = 'workbook_close_c' )
       import c_ptr
