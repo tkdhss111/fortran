@@ -124,6 +124,25 @@ void worksheet_insert_image_c( lxw_worksheet **worksheet, int row, int col, cons
   worksheet_insert_image( *worksheet, row - 1, col - 1, file );
 }
 
+//ToDo add x_scale and so forth
+lxw_image_options worksheet_set_image_options_c( lxw_worksheet **worksheet, const char* position )
+{
+  lxw_image_options options;
+
+  if ( strcmp ( position, "default"             ) == 0 ) options.object_position = LXW_OBJECT_POSITION_DEFAULT;
+  if ( strcmp ( position, "move_and_size"       ) == 0 ) options.object_position = LXW_OBJECT_MOVE_AND_SIZE;
+  if ( strcmp ( position, "move_dont_size"      ) == 0 ) options.object_position = LXW_OBJECT_MOVE_DONT_SIZE;
+  if ( strcmp ( position, "dont_move_dont_size" ) == 0 ) options.object_position = LXW_OBJECT_DONT_MOVE_DONT_SIZE;
+  if ( strcmp ( position, "move_and_size_after" ) == 0 ) options.object_position = LXW_OBJECT_MOVE_AND_SIZE_AFTER;
+
+  return options;
+}
+
+void worksheet_insert_image_opt_c( lxw_worksheet **worksheet, int row, int col, const char* file, lxw_image_options **options )
+{
+  worksheet_insert_image_opt( *worksheet, row - 1, col - 1, file, *options );
+}
+
 void worksheet_set_header_c( lxw_worksheet **worksheet, const char* file )
 {
   worksheet_set_header( *worksheet, file );

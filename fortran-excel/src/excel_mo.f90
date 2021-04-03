@@ -15,6 +15,20 @@ module excel_mo
 
   end type
 
+  type, bind(c) :: image_options_ty
+    
+    integer(c_int)    :: x_offset        = 0
+    integer(c_int)    :: y_offset        = 0
+    real(c_double)    :: x_scale         = 1.d0
+    real(c_double)    :: y_scale         = 1.d0
+    integer(c_int)    :: object_position = 0
+    integer(c_int)    :: decorative      = 0
+    character(c_char) :: description     = c_null_char
+    character(c_char) :: url             = c_null_char
+    character(c_char) :: tip             = c_null_char
+
+  end type
+
   interface
 
     integer(c_int) function name2row ( name ) &
@@ -173,6 +187,15 @@ module excel_mo
       type(c_ptr),       intent(in)        :: worksheet
       integer(c_int),    intent(in), value :: row, col
       character(c_char), intent(in)        :: file
+    end subroutine
+
+    subroutine worksheet_insert_image_opt ( worksheet, row, col, file, options ) &
+        bind ( c, name = 'worksheet_insert_image_opt_c' )
+      import c_ptr, c_int, c_char, image_options_ty
+      type(c_ptr),            intent(in)        :: worksheet
+      type(image_options_ty), intent(in)        :: options
+      integer(c_int),         intent(in), value :: row, col
+      character(c_char),      intent(in)        :: file
     end subroutine
 
     subroutine worksheet_write_comment ( worksheet, row, col, string ) &

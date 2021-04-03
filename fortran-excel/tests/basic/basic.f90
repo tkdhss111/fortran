@@ -6,10 +6,11 @@ program main
 
   integer, parameter :: NFMS = 9 ! Number of formats
 
-  type(c_ptr) :: wb(1)      ! Workbook pointer
-  type(c_ptr) :: ws(1:3)    ! Worksheet pointer
-  type(c_ptr) :: fm(0:NFMS) ! Format pointer ! 0 is reserved for no format
-  type(datetime_ty) :: datetime
+  type(c_ptr)            :: wb(1)      ! Workbook pointer
+  type(c_ptr)            :: ws(1:3)    ! Worksheet pointer
+  type(c_ptr)            :: fm(0:NFMS) ! Format pointer ! 0 is reserved for no format
+  type(datetime_ty)      :: datetime
+  type(image_options_ty) :: image_options
 
   integer i
 
@@ -84,6 +85,8 @@ program main
   call worksheet_write_formula ( ws(1), row = 6, col = 2, formula = cs('=SUM(B2:B4)'), format = fm(9) )
 
   ! Insert image
+  image_options = image_options_ty ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0 )
+  call worksheet_insert_image_opt ( ws(1), row = 15, col = 1, file = cs('fig.png'), options = image_options )
   call worksheet_insert_image ( ws(1), row = 8, col = 1, file = cs('fig.png') )
 
   ! Datetime
