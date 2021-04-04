@@ -1,12 +1,12 @@
 # ninja log v5
-2	84	1617524797330978199	tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90-pp.f90	793221dffcff0f6e
-2	99	1617524797345785740	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o.ddi	31e5b8c6a27d1d97
-3	33	0	CMakeFiles/install.util	650ffe1a55a5b181
-2	84	1617524797330978199	tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o.ddi	793221dffcff0f6e
-99	137	1617524797384580231	tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd	29048bbc78f438dd
-139	272	1617524797324768756	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o	bac13fded432f39b
-139	272	1617524797324768756	tests/basic/excel_mo.mod	bac13fded432f39b
-2	337	1617524797579406205	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel.c.o	242abc6c22fb673
-2	99	1617524797345785740	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90-pp.f90	31e5b8c6a27d1d97
-272	417	1617524797662988471	tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o	33bde1266c4044e5
-418	556	1617524797798146564	tests/basic/test_fortran-excel	e8844a0b7a4ae282
+0	72	1617528878416003670	tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90-pp.f90	793221dffcff0f6e
+1	95	1617528878439394021	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o.ddi	31e5b8c6a27d1d97
+3	35	0	CMakeFiles/install.util	650ffe1a55a5b181
+95	126	1617528878470449285	tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd	29048bbc78f438dd
+0	72	1617528878416003670	tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o.ddi	793221dffcff0f6e
+127	247	1617528878589611665	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o	bac13fded432f39b
+127	247	1617528878589611665	tests/basic/excel_mo.mod	bac13fded432f39b
+1	332	1617528878672651055	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel.c.o	242abc6c22fb673
+1	95	1617528878439394021	tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90-pp.f90	31e5b8c6a27d1d97
+247	390	1617528878732137602	tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o	33bde1266c4044e5
+390	526	1617528878857038473	tests/basic/test_fortran-excel	e8844a0b7a4ae282

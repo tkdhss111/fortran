@@ -9,9 +9,8 @@ program main
   type(c_ptr)            :: wb(1)      ! Workbook pointer
   type(c_ptr)            :: ws(1:3)    ! Worksheet pointer
   type(c_ptr)            :: fm(0:NFMS) ! Format pointer ! 0 is reserved for no format
-  type(c_ptr)            :: op2        ! Image options pointer
-  type(datetime_ty)      :: dt
   type(image_options_ty) :: op
+  type(datetime_ty)      :: dt
 
   integer i
 
@@ -25,14 +24,10 @@ program main
   print *, 'RANGE:', RANGE('A1:C3')
 
   ! Workbook and worksheets
-  !call workbook_new ( wb(1), file = cs('test.xlsx') )
-  wb(1) = workbook_new2 ( file = cs('test.xlsx') )
-  !call workbook_add_worksheet ( wb(1), ws(1), cs('first_sheet') )
-  !call workbook_add_worksheet ( wb(1), ws(2), cs('second_sheet') )
-  !call workbook_add_worksheet ( wb(1), ws(3), cs('third_sheet') )
-  ws(1) = workbook_add_worksheet2 ( wb(1), cs('first_sheet') )
-  ws(2) = workbook_add_worksheet2 ( wb(1), cs('second_sheet') )
-  ws(3) = workbook_add_worksheet2 ( wb(1), cs('third_sheet') )
+  wb(1) = workbook_new ( file = cs('test.xlsx') )
+  ws(1) = workbook_add_worksheet ( wb(1), cs('first_sheet') )
+  ws(2) = workbook_add_worksheet ( wb(1), cs('second_sheet') )
+  ws(3) = workbook_add_worksheet ( wb(1), cs('third_sheet') )
  ! call worksheet_activate ( ws(2) )
  ! call worksheet_hide     ( ws(3) )
   call worksheet_set_tab_color ( ws(1), cs('lime') )
@@ -44,8 +39,7 @@ program main
   ! Format settings
   do i = 0, NFMS 
 
-    !call workbook_add_format ( wb(1), fm(i) )
-    fm(i) = workbook_add_format2 ( wb(1) ) ! test
+    fm(i) = workbook_add_format ( wb(1) ) ! test
 
     if ( mod ( i, 2 ) == 0 .and. i > 0 .and. i < 5 ) then
       call format_set_bg_color ( fm(i), cs('cyan') )
@@ -92,9 +86,7 @@ program main
 
   ! Insert image
   op = image_set_options ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0, position = cs('move_and_size') )
-  op2 = image_set_options2 ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0, position = cs('move_and_size') )
   call worksheet_insert_image_opt ( ws(1), row = 15, col = 1, file = cs('fig.png'), options = op )
-  call worksheet_insert_image_opt2 ( ws(1), row = 15, col = 1, file = cs('fig.png'), options = op2 )
   call worksheet_insert_image     ( ws(1), row =  8, col = 1, file = cs('fig.png') )
 
   ! Datetime
