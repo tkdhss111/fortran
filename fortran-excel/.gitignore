@@ -2,4 +2,5 @@
 **/bin/*
 **/doc/*
 .DS_Store
+build
 

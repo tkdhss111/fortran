@@ -1,8 +1,0 @@
-{
-	"object" : "tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o",
-	"provides" : 
-	[
-		"excel_mo.mod"
-	],
-	"requires" : []
-}

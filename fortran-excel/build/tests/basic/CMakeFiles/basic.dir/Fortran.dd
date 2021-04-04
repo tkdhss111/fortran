@@ -1,6 +1,0 @@
-ninja_dyndep_version = 1.0
-build tests/basic/CMakeFiles/basic.dir/basic.f90.o: dyndep | tests/basic/excel_mo.mod
-
-build tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o | tests/basic/excel_mo.mod: dyndep
-  restat = 1
-

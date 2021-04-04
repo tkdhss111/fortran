@@ -22,7 +22,7 @@ module excel_mo
     real(c_double)    :: x_scale         = 1.d0
     real(c_double)    :: y_scale         = 1.d0
     integer(c_int)    :: object_position = 0
-    integer(c_int)    :: decorative      = 0 ! dummy
+    integer(c_int)    :: decorative      = 0
     character(c_char) :: description     = c_null_char
     character(c_char) :: url             = c_null_char
     character(c_char) :: tip             = c_null_char
@@ -62,12 +62,26 @@ module excel_mo
       character(c_char), intent(in) :: file
     end subroutine
 
+    type(c_ptr) function workbook_new2 ( file ) &
+        bind ( c, name = 'workbook_new_c2' )
+      import c_ptr, c_char
+      character(c_char), intent(in) :: file
+    end function
+
     subroutine workbook_add_worksheet ( workbook, worksheet, name ) &
         bind ( c, name = 'workbook_add_worksheet_c' )
       import c_ptr, c_char
       type(c_ptr),       intent(in) :: workbook, worksheet
       character(c_char), intent(in) :: name
     end subroutine
+
+    ! test
+    type(c_ptr) function workbook_add_worksheet2 ( workbook, name ) &
+        bind ( c, name = 'workbook_add_worksheet_c2' )
+      import c_ptr, c_char
+      type(c_ptr),       intent(in) :: workbook
+      character(c_char), intent(in) :: name
+    end function
 
     subroutine worksheet_activate ( worksheet ) &
         bind ( c, name = 'worksheet_activate_c' )
@@ -92,6 +106,12 @@ module excel_mo
       import c_ptr
       type(c_ptr), intent(in) :: workbook, format
     end subroutine
+
+    type(c_ptr) function workbook_add_format2 ( workbook ) &
+        bind ( c, name = 'workbook_add_format_c2' )
+      import c_ptr
+      type(c_ptr), intent(in) :: workbook
+    end function
 
     subroutine workbook_define_name ( workbook, name, formula ) &
         bind ( c, name = 'workbook_define_name_c' )
@@ -191,6 +211,16 @@ module excel_mo
       character(c_char), intent(in), optional :: description, url, tip
     end function
 
+    type(c_ptr) function image_set_options2 &
+        ( x_offset, y_offset, x_scale, y_scale, position, description, url, tip ) &
+        bind ( c, name = 'image_set_options_c2' )
+      import c_int, c_double, c_char, c_ptr
+      integer(c_int),    intent(in), value    :: x_offset, y_offset
+      real(c_double),    intent(in), value    :: x_scale, y_scale
+      character(c_char), intent(in), optional :: position
+      character(c_char), intent(in), optional :: description, url, tip
+    end function
+
     subroutine worksheet_insert_image_opt ( worksheet, row, col, file, options ) &
         bind ( c, name = 'worksheet_insert_image_opt_c' )
       import c_ptr, c_int, c_char, image_options_ty
@@ -198,6 +228,15 @@ module excel_mo
       type(image_options_ty), intent(in)        :: options
       integer(c_int),         intent(in), value :: row, col
       character(c_char),      intent(in)        :: file
+    end subroutine
+
+    subroutine worksheet_insert_image_opt2 ( worksheet, row, col, file, options ) &
+        bind ( c, name = 'worksheet_insert_image_opt_c' ) ! same as the above
+      import c_ptr, c_int, c_char
+      type(c_ptr),       intent(in)        :: worksheet
+      type(c_ptr),       intent(in)        :: options
+      integer(c_int),    intent(in), value :: row, col
+      character(c_char), intent(in)        :: file
     end subroutine
 
     subroutine worksheet_insert_image ( worksheet, row, col, file ) &
