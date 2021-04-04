@@ -90,8 +90,9 @@ program main
 
   ! Insert image
   image_options = image_options_ty ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0 )
+  !image_options = image_set_options ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0 )
   call worksheet_insert_image_opt ( ws(1), row = 15, col = 1, file = cs('fig.png'), options = image_options )
-  call worksheet_insert_image ( ws(1), row = 8, col = 1, file = cs('fig.png') )
+  call worksheet_insert_image     ( ws(1), row =  8, col = 1, file = cs('fig.png') )
 
   ! Datetime
   call format_set_num_format ( fm(7), cs('yyyy-mm-dd hh:mm:ss') )
@@ -108,7 +109,7 @@ program main
   call worksheet_write_formula ( ws(1), row = 9, col = 2, formula = cs('=Exchange_rate'), format = fm(0) )
 
   ! Merge range
-  call worksheet_merge_range ( ws(1), name2row(cs('B8:C8')), name2col(cs('B8:C8')), name2row2(cs('B8:C8')), name2col2(cs('B8:C8')), cs('Merged range'), fm(1) )
+  call worksheet_merge_range ( ws(1), name2row(cs('C1:E1')), name2col(cs('C1:E1')), name2row2(cs('C1:E1')), name2col2(cs('C1:E1')), cs('Merged range'), fm(1) )
 
   ! Close the workbook
   call workbook_close ( wb(1) )

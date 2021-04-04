@@ -1,4 +1,4 @@
-set ( EXE basic )
+set ( EXE test_fortran-excel )
 
 set ( SRCS 
   ./basic.f90

@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: hello
-# Configurations: Release
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -24,7 +24,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = Release
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -118,9 +118,27 @@ build test: phony CMakeFiles/test.util
 
 
 #############################################
-# Utility command for list_install_components
+# Utility command for install/strip
 
-build tests/basic/list_install_components: phony
+build tests/basic/CMakeFiles/install/strip.util: CUSTOM_COMMAND tests/basic/all
+  COMMAND = cd /Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic && /usr/local/Cellar/cmake/3.19.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build tests/basic/install/strip: phony tests/basic/CMakeFiles/install/strip.util
+
+
+#############################################
+# Utility command for install
+
+build tests/basic/CMakeFiles/install.util: CUSTOM_COMMAND tests/basic/all
+  COMMAND = cd /Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic && /usr/local/Cellar/cmake/3.19.1/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build tests/basic/install: phony tests/basic/CMakeFiles/install.util
 
 
 #############################################
@@ -171,95 +189,77 @@ build tests/basic/test: phony tests/basic/CMakeFiles/test.util
 
 
 #############################################
-# Utility command for install/strip
+# Utility command for list_install_components
 
-build tests/basic/CMakeFiles/install/strip.util: CUSTOM_COMMAND tests/basic/all
-  COMMAND = cd /Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic && /usr/local/Cellar/cmake/3.19.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-  DESC = Installing the project stripped...
-  pool = console
-  restat = 1
-
-build tests/basic/install/strip: phony tests/basic/CMakeFiles/install/strip.util
-
-
-#############################################
-# Utility command for install
-
-build tests/basic/CMakeFiles/install.util: CUSTOM_COMMAND tests/basic/all
-  COMMAND = cd /Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic && /usr/local/Cellar/cmake/3.19.1/bin/cmake -P cmake_install.cmake
-  DESC = Install the project...
-  pool = console
-  restat = 1
-
-build tests/basic/install: phony tests/basic/CMakeFiles/install.util
+build tests/basic/list_install_components: phony
 
 # =============================================================================
-# Object build statements for EXECUTABLE target basic
+# Object build statements for EXECUTABLE target test_fortran-excel
 
 
 #############################################
-# Order-only phony target for basic
+# Order-only phony target for test_fortran-excel
 
-build cmake_object_order_depends_target_basic: phony || tests/basic/CMakeFiles/basic.dir
+build cmake_object_order_depends_target_test_fortran-excel: phony || tests/basic/CMakeFiles/test_fortran-excel.dir
 
-build tests/basic/CMakeFiles/basic.dir/basic.f90-pp.f90 | tests/basic/CMakeFiles/basic.dir/basic.f90.o.ddi: Fortran_PREPROCESS_SCAN__basic_Release ../tests/basic/basic.f90 || cmake_object_order_depends_target_basic
-  DEP_FILE = tests/basic/CMakeFiles/basic.dir/basic.f90.o.pp.d
-  DYNDEP_INTERMEDIATE_FILE = tests/basic/CMakeFiles/basic.dir/basic.f90.o.ddi
-  FLAGS = -ffree-line-length-none -Drelease -O3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic
+build tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90-pp.f90 | tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o.ddi: Fortran_PREPROCESS_SCAN__test_fortran-excel_Debug ../tests/basic/basic.f90 || cmake_object_order_depends_target_test_fortran-excel
+  DEP_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o.pp.d
+  DYNDEP_INTERMEDIATE_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o.ddi
+  FLAGS = -ffree-line-length-none -Ddebug -O0 -fbounds-check -Wall -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic
   INCLUDES = -I/usr/local/include
-  OBJ_FILE = tests/basic/CMakeFiles/basic.dir/basic.f90.o
+  OBJ_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o
 
-build tests/basic/CMakeFiles/basic.dir/basic.f90.o: Fortran_COMPILER__basic_Release tests/basic/CMakeFiles/basic.dir/basic.f90-pp.f90 || tests/basic/CMakeFiles/basic.dir/Fortran.dd
-  FLAGS = -ffree-line-length-none -Drelease -O3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic -fpreprocessed
+build tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o: Fortran_COMPILER__test_fortran-excel_Debug tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90-pp.f90 || tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd
+  FLAGS = -ffree-line-length-none -Ddebug -O0 -fbounds-check -Wall -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic -fpreprocessed
   INCLUDES = -I../tests/basic -I/usr/local/include
-  OBJECT_DIR = tests/basic/CMakeFiles/basic.dir
-  OBJECT_FILE_DIR = tests/basic/CMakeFiles/basic.dir
-  dyndep = tests/basic/CMakeFiles/basic.dir/Fortran.dd
+  OBJECT_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir
+  OBJECT_FILE_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir
+  dyndep = tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd
 
-build tests/basic/CMakeFiles/basic.dir/__/__/src/excel.c.o: C_COMPILER__basic_Release ../src/excel.c || cmake_object_order_depends_target_basic
-  DEP_FILE = tests/basic/CMakeFiles/basic.dir/__/__/src/excel.c.o.d
-  FLAGS = -O -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk
+build tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel.c.o: C_COMPILER__test_fortran-excel_Debug ../src/excel.c || cmake_object_order_depends_target_test_fortran-excel
+  DEP_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel.c.o.d
+  FLAGS = -O -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk
   INCLUDES = -I/usr/local/include
-  OBJECT_DIR = tests/basic/CMakeFiles/basic.dir
-  OBJECT_FILE_DIR = tests/basic/CMakeFiles/basic.dir/__/__/src
+  OBJECT_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir
+  OBJECT_FILE_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src
 
-build tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90-pp.f90 | tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o.ddi: Fortran_PREPROCESS_SCAN__basic_Release ../src/excel_mo.f90 || cmake_object_order_depends_target_basic
-  DEP_FILE = tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o.pp.d
-  DYNDEP_INTERMEDIATE_FILE = tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o.ddi
-  FLAGS = -ffree-line-length-none -Drelease -O3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic
+build tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90-pp.f90 | tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o.ddi: Fortran_PREPROCESS_SCAN__test_fortran-excel_Debug ../src/excel_mo.f90 || cmake_object_order_depends_target_test_fortran-excel
+  DEP_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o.pp.d
+  DYNDEP_INTERMEDIATE_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o.ddi
+  FLAGS = -ffree-line-length-none -Ddebug -O0 -fbounds-check -Wall -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic
   INCLUDES = -I/usr/local/include
-  OBJ_FILE = tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o
+  OBJ_FILE = tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o
 
-build tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o: Fortran_COMPILER__basic_Release tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90-pp.f90 || tests/basic/CMakeFiles/basic.dir/Fortran.dd
-  FLAGS = -ffree-line-length-none -Drelease -O3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic -fpreprocessed
+build tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o: Fortran_COMPILER__test_fortran-excel_Debug tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90-pp.f90 || tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd
+  FLAGS = -ffree-line-length-none -Ddebug -O0 -fbounds-check -Wall -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Jtests/basic -fpreprocessed
   INCLUDES = -I../src -I/usr/local/include
-  OBJECT_DIR = tests/basic/CMakeFiles/basic.dir
-  OBJECT_FILE_DIR = tests/basic/CMakeFiles/basic.dir/__/__/src
-  dyndep = tests/basic/CMakeFiles/basic.dir/Fortran.dd
+  OBJECT_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir
+  OBJECT_FILE_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src
+  dyndep = tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd
 
-build tests/basic/CMakeFiles/basic.dir/Fortran.dd: Fortran_DYNDEP__basic_Release tests/basic/CMakeFiles/basic.dir/basic.f90.o.ddi tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o.ddi
+build tests/basic/CMakeFiles/test_fortran-excel.dir/Fortran.dd: Fortran_DYNDEP__test_fortran-excel_Debug tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o.ddi tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o.ddi
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target basic
+# Link build statements for EXECUTABLE target test_fortran-excel
 
 
 #############################################
-# Link the executable tests/basic/basic
+# Link the executable tests/basic/test_fortran-excel
 
-build tests/basic/basic: Fortran_EXECUTABLE_LINKER__basic_Release tests/basic/CMakeFiles/basic.dir/basic.f90.o tests/basic/CMakeFiles/basic.dir/__/__/src/excel.c.o tests/basic/CMakeFiles/basic.dir/__/__/src/excel_mo.f90.o
-  FLAGS = -ffree-line-length-none -Drelease -O3 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk
+build tests/basic/test_fortran-excel: Fortran_EXECUTABLE_LINKER__test_fortran-excel_Debug tests/basic/CMakeFiles/test_fortran-excel.dir/basic.f90.o tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel.c.o tests/basic/CMakeFiles/test_fortran-excel.dir/__/__/src/excel_mo.f90.o
+  FLAGS = -ffree-line-length-none -Ddebug -O0 -fbounds-check -Wall -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk
   LINK_LIBRARIES = -lxlsxwriter  -L/usr/local/lib
-  OBJECT_DIR = tests/basic/CMakeFiles/basic.dir
+  OBJECT_DIR = tests/basic/CMakeFiles/test_fortran-excel.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = tests/basic/basic
-  TARGET_PDB = basic.dbg
+  TARGET_FILE = tests/basic/test_fortran-excel
+  TARGET_PDB = test_fortran-excel.dbg
 
 # =============================================================================
 # Target aliases.
 
-build basic: phony tests/basic/basic
+build test_fortran-excel: phony tests/basic/test_fortran-excel
 
 # =============================================================================
 # Folder targets.
@@ -276,7 +276,7 @@ build all: phony tests/basic/all
 #############################################
 # Folder: /Users/hisashitakeda/2_Tools/fortran/fortran-excel/build/tests/basic
 
-build tests/basic/all: phony tests/basic/basic
+build tests/basic/all: phony tests/basic/test_fortran-excel
 
 # =============================================================================
 # Unknown Build Time Dependencies.

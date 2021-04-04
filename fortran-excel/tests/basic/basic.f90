@@ -28,8 +28,8 @@ program main
   call workbook_add_worksheet ( wb(1), ws(1), cs('first_sheet') )
   call workbook_add_worksheet ( wb(1), ws(2), cs('second_sheet') )
   call workbook_add_worksheet ( wb(1), ws(3), cs('third_sheet') )
-  call worksheet_activate ( ws(2) )
-  call worksheet_hide     ( ws(3) )
+ ! call worksheet_activate ( ws(2) )
+ ! call worksheet_hide     ( ws(3) )
   call worksheet_set_tab_color ( ws(1), cs('lime') )
 
   ! Header and footer
@@ -85,9 +85,9 @@ program main
   call worksheet_write_formula ( ws(1), row = 6, col = 2, formula = cs('=SUM(B2:B4)'), format = fm(9) )
 
   ! Insert image
-  image_options = image_options_ty ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0 )
+  image_options = image_set_options ( x_offset = 10, y_offset = 10, x_scale = 0.5d0, y_scale = 0.5d0, position = cs('move_and_size') )
   call worksheet_insert_image_opt ( ws(1), row = 15, col = 1, file = cs('fig.png'), options = image_options )
-  call worksheet_insert_image ( ws(1), row = 8, col = 1, file = cs('fig.png') )
+  call worksheet_insert_image     ( ws(1), row =  8, col = 1, file = cs('fig.png') )
 
   ! Datetime
   call format_set_num_format ( fm(7), cs('yyyy-mm-dd hh:mm:ss') )
@@ -104,7 +104,7 @@ program main
   call worksheet_write_formula ( ws(1), row = 9, col = 2, formula = cs('=Exchange_rate'), format = fm(0) )
 
   ! Merge range
-  call worksheet_merge_range ( ws(1), RANGE('B8:C8'), cs('Merged range'), fm(1) )
+  call worksheet_merge_range ( ws(1), RANGE('C1:E1'), cs('Merged range'), fm(1) )
 
   ! Close the workbook
   call workbook_close ( wb(1) )

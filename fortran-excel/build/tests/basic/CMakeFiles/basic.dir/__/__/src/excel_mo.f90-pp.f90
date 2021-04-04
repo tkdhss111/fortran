@@ -26,7 +26,7 @@ module excel_mo
     real(c_double)    :: x_scale         = 1.d0
     real(c_double)    :: y_scale         = 1.d0
     integer(c_int)    :: object_position = 0
-    integer(c_int)    :: decorative      = 0
+    integer(c_int)    :: decorative      = 0 ! dummy
     character(c_char) :: description     = c_null_char
     character(c_char) :: url             = c_null_char
     character(c_char) :: tip             = c_null_char
@@ -185,13 +185,15 @@ module excel_mo
       character(c_char), intent(in)        :: string
     end subroutine
 
-    subroutine worksheet_insert_image ( worksheet, row, col, file ) &
-        bind ( c, name = 'worksheet_insert_image_c' )
-      import c_ptr, c_int, c_char
-      type(c_ptr),       intent(in)        :: worksheet
-      integer(c_int),    intent(in), value :: row, col
-      character(c_char), intent(in)        :: file
-    end subroutine
+    type(image_options_ty) function image_set_options &
+        ( x_offset, y_offset, x_scale, y_scale, position, description, url, tip ) &
+        bind ( c, name = 'image_set_options_c' )
+      import c_int, c_double, c_char, image_options_ty
+      integer(c_int),    intent(in), value    :: x_offset, y_offset
+      real(c_double),    intent(in), value    :: x_scale, y_scale
+      character(c_char), intent(in), optional :: position
+      character(c_char), intent(in), optional :: description, url, tip
+    end function
 
     subroutine worksheet_insert_image_opt ( worksheet, row, col, file, options ) &
         bind ( c, name = 'worksheet_insert_image_opt_c' )
@@ -200,6 +202,14 @@ module excel_mo
       type(image_options_ty), intent(in)        :: options
       integer(c_int),         intent(in), value :: row, col
       character(c_char),      intent(in)        :: file
+    end subroutine
+
+    subroutine worksheet_insert_image ( worksheet, row, col, file ) &
+        bind ( c, name = 'worksheet_insert_image_c' )
+      import c_ptr, c_int, c_char
+      type(c_ptr),       intent(in)        :: worksheet
+      integer(c_int),    intent(in), value :: row, col
+      character(c_char), intent(in)        :: file
     end subroutine
 
     subroutine worksheet_write_comment ( worksheet, row, col, string ) &

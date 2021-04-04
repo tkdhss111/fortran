@@ -119,28 +119,50 @@ void worksheet_write_comment_c( lxw_worksheet **worksheet, int row, int col, con
   worksheet_write_comment( *worksheet, row - 1, col - 1, text );
 }
 
+//Takeda original function
+lxw_image_options image_set_options_c
+( int x_offset, int y_offset, double x_scale, double y_scale, const char* position, char* description, char* url, char* tip )
+{
+  lxw_image_options options;
+
+  options.x_offset    = x_offset;
+  options.y_offset    = y_offset;
+  options.x_scale     = x_scale;
+  options.y_scale     = y_scale;
+  options.description = description;
+  options.url         = url;
+  options.tip         = tip;
+
+//  printf( "x_offset: %d\n", (*options).x_offset );
+//  printf( "y_offset: %d\n", (*options).y_offset );
+//  printf( "x_scale: %f\n", (*options).x_scale );
+//  printf( "y_scale: %f\n", (*options).y_scale );
+//  printf( "object_position: %d\n", (*options).object_position );
+//  printf( "description: %s\n", (*options).description );
+//  printf( "url: %s\n", (*options).url );
+//  printf( "tip: %s\n", (*options).tip );
+
+  if ( position != NULL ) 
+  {
+    //printf( "position: %s\n", position );
+    if ( strcmp( position, "default"             ) == 0 ) options.object_position = LXW_OBJECT_POSITION_DEFAULT;
+    if ( strcmp( position, "move_and_size"       ) == 0 ) options.object_position = LXW_OBJECT_MOVE_AND_SIZE;
+    if ( strcmp( position, "move_dont_size"      ) == 0 ) options.object_position = LXW_OBJECT_MOVE_DONT_SIZE;
+    if ( strcmp( position, "dont_move_dont_size" ) == 0 ) options.object_position = LXW_OBJECT_DONT_MOVE_DONT_SIZE;
+    if ( strcmp( position, "move_and_size_after" ) == 0 ) options.object_position = LXW_OBJECT_MOVE_AND_SIZE_AFTER;
+  }
+
+  return options;
+}
+
 void worksheet_insert_image_c( lxw_worksheet **worksheet, int row, int col, const char* file )
 {
   worksheet_insert_image( *worksheet, row - 1, col - 1, file );
 }
 
-//ToDo add x_scale and so forth
-lxw_image_options worksheet_set_image_options_c( lxw_worksheet **worksheet, const char* position )
+void worksheet_insert_image_opt_c( lxw_worksheet **worksheet, int row, int col, const char* file, lxw_image_options *options )
 {
-  lxw_image_options options;
-
-  if ( strcmp ( position, "default"             ) == 0 ) options.object_position = LXW_OBJECT_POSITION_DEFAULT;
-  if ( strcmp ( position, "move_and_size"       ) == 0 ) options.object_position = LXW_OBJECT_MOVE_AND_SIZE;
-  if ( strcmp ( position, "move_dont_size"      ) == 0 ) options.object_position = LXW_OBJECT_MOVE_DONT_SIZE;
-  if ( strcmp ( position, "dont_move_dont_size" ) == 0 ) options.object_position = LXW_OBJECT_DONT_MOVE_DONT_SIZE;
-  if ( strcmp ( position, "move_and_size_after" ) == 0 ) options.object_position = LXW_OBJECT_MOVE_AND_SIZE_AFTER;
-
-  return options;
-}
-
-void worksheet_insert_image_opt_c( lxw_worksheet **worksheet, int row, int col, const char* file, lxw_image_options **options )
-{
-  worksheet_insert_image_opt( *worksheet, row - 1, col - 1, file, *options );
+  worksheet_insert_image_opt( *worksheet, row - 1, col - 1, file, options );
 }
 
 void worksheet_set_header_c( lxw_worksheet **worksheet, const char* file )

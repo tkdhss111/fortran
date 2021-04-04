@@ -1,4 +1,4 @@
-BIN := template
+BIN := fortran-excel
 
 DIR_INS=${HOME}/2_Tools/fortran/fortran-excel
 DIR_BIN=${DIR_INS}/bin
@@ -34,8 +34,7 @@ release:
 
 .PHONY: debug
 debug:
-	$(MKDIR_BUILD) && $(CMAKE_DBG) && $(NINJA) && $(NINJA) install && \
-	cp ${DIR_BIN}/$(BIN) ~/gdb/fortran_debug
+	$(MKDIR_BUILD) && $(CMAKE_DBG) && $(NINJA) && $(NINJA) install
 
 .PHONY: valgrind
 valgrind: debug
